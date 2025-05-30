@@ -1,5 +1,5 @@
 ## General conclusion
-he main goal of this project was to analyze user behavior across two different prepaid plans (Surf and Ultimate) offered by Megaline, and determine which plan generates more revenue.
+The main goal of this project was to analyze user behavior across two different prepaid plans (Surf and Ultimate) offered by Megaline, and determine which plan generates more revenue.
 
 Several datasets were provided, including user data, call records, message logs, and internet usage.
 Key cleaning steps included handling missing values, converting date columns to datetime types, and filtering out irrelevant data (such as calls with zero duration and internet sessions with zero traffic).
