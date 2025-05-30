@@ -5,7 +5,7 @@ Projects I worked on while attending the Data Science TripleTen Bootcamp.
 
 | Project number | Title | Description |
 | :-----------: | ----------- |----------- |
-| 1 | [Basic Python]([https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/Basic%20Python.ipynb](https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/Basic%20Python/Basic%20Python.ipynb))| The project task was to analyze user data and find possible causes for the company’s low CR and retention rate. |
+| 1 | [Basic Python]([https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/Basic%20Python.ipynb](https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/Basic%20Python/Basic%20Python.ipynb)| The project task was to analyze user data and find possible causes for the company’s low CR and retention rate. |
 | 2 | [EDA]([https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/EDA.ipynb](https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/EDA/EDA.ipynb)) | The project task was to prepare a report that gives insight into the shopping habits of Instacart customers |
 | 3 | [SDA]([https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/SDA.ipynb](https://github.com/ayoungfloof/Data_projects_TripleTen/blob/main/SDA/SDA.ipynb)) | The project task was to study the sales funnel and analyze the results of an A/B test for a food startup. |
 | 4 | [Softward Development Tools](https://carsalesdashboard.onrender.com/) | A Streamlit-based web dashboard built to visualize and explore car sales data, featuring interactive histograms, scatter plots, and filters, deployed via Render.|
