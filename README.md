@@ -8,7 +8,7 @@ Projects I worked on while attending the Data Science TripleTen Bootcamp.
 | 1 | Basic Python| The project task was to analyze user data and find possible causes for the company’s low CR and retention rate. |
 | 2 | EDA | The project task was to prepare a report that gives insight into the shopping habits of Instacart customers |
 | 3 | SDA | The project task was to study the sales funnel and analyze the results of an A/B test for a food startup. |
-| 4 | Softward Development Tools | The project task was to help a chain of fitness clubs develop a customer retention strategy. |
+| 4 | Softward Development Tools | A Streamlit-based web dashboard built to visualize and explore car sales data, featuring interactive histograms, scatter plots, and filters, deployed via Render.|
 | 5 | Video Game Sales Forecasting | The project task was to analyze user data and find possible causes for the company’s low CR and retention rate. |
 | 6 | SQL | The project task was to prepare a report that gives insight into the shopping habits of Instacart customers |
 | 7 | Intro to Machine Learning | The project task was to study the sales funnel and analyze the results of an A/B test for a food startup. |
