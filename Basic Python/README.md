@@ -34,6 +34,7 @@ This project explores how audience voting behavior relates to show ratings durin
 - Focused on identifying score ranges with the highest engagement (votes)
 
 **Visuals**
+
 ![image](https://github.com/user-attachments/assets/aa5933f5-b861-4bfb-8999-92dac677cc7f)
 
 **Conclusion**
