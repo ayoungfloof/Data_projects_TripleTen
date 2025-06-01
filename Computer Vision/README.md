@@ -73,4 +73,5 @@ This project successfully trained a CNN model to estimate customer age from faci
     - Test in varied lighting and camera conditions to ensure robustness
 
 **Final Recommendation**
+
 The trained ResNet-based model meets performance goals and offers real-world value for supporting underage sales prevention. With further tuning and deployment testing, it could serve as a hybrid AI-human review tool to assist staff at self-checkout stations, improving both regulatory compliance and customer trust.
