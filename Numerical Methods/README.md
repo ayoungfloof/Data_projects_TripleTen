@@ -1,82 +1,71 @@
-# Optimizing Used Car Price Predictions for Rusty Bargain
-1. Description:
-Rusty Bargain, a used car sales service, is developing an app to help customers quickly estimate the market value of their vehicles. By leveraging historical data, including technical specifications, trim versions, and pricing details, this project aims to build an accurate machine learning model to predict car prices. The primary focus is on achieving a balance between prediction quality, training efficiency, and inference speed to ensure a seamless user experience.
+## Optimizing Used Car Price Predictions for Rusty Bargain
 
-2. Objective:
-    - Train multiple machine learning models to predict car prices based on historical data.
-    - Compare different algorithms, including Linear Regression, Decision Tree, Random Forest, and Gradient Boosting models.
-    - Evaluate model performance using the Root Mean Squared Error (RMSE) metric.
-    - Optimize hyperparameters using Optuna to enhance model accuracy.
-    - Assess the trade-offs between model accuracy and computational efficiency to determine the most suitable approach for deployment.
+**Overview**
+Rusty Bargain, a used car sales service, is developing an app to help customers quickly estimate the market value of their vehicles. This project leverages historical car data to build a machine learning model that predicts car prices accurately and efficiently — balancing performance with computational cost for real-time usage.
 
-3. Data Sources:
+**Project Objective**
+- Build regression models to predict used car prices
+- Compare performance across Linear Regression, Decision Tree, Random Forest, and LightGBM
+- Optimize hyperparameters using Optuna
+- Evaluate accuracy, training time, and inference speed
+- Recommend the best model for production deployment in the pricing app
+
+**Data Sources**
+- Dataset path: /datasets/car_data.csv
 - The dataset contains detailed information about used cars, stored in /datasets/car_data.csv, with the following key features:
     - Vehicle characteristics: VehicleType, RegistrationYear, Gearbox, Power, Mileage, FuelType, Brand, Model, NotRepaired
     - Listing details: DateCrawled, DateCreated, LastSeen, NumberOfPictures, PostalCode
     - Target variable: Price (in Euros)
 
-4. Approach:
-- Data Preparation:
-    - Load and inspect the dataset for missing values and inconsistencies.
-    - Perform feature engineering, including encoding categorical variables.
-    - Handle duplicate or irrelevant features to improve model efficiency.
+**Tools & Technologies**
 
-- Model Development:
-    - Train and evaluate Linear Regression as a baseline model.
-    - Implement Decision Tree, Random Forest, and LightGBM models.
-    - Optimize hyperparameters using Optuna to improve performance.
 
-- Performance Evaluation:
-    - Measure model accuracy using RMSE to assess prediction quality.
-    - Compare training time and inference speed across models.
-    - Identify the best-performing model for deployment.
+**Methodogy**
+1. Data Preparation
+- Loaded and explored data
+- Handled missing values and removed irrelevant features
+- Encoded categorical variables
+- Performed train/validation/test split
+2. Model Training
+- Baseline model: Linear Regression
+- Trained advanced models: Decision Tree, Random Forest, LightGBM
+- Applied Optuna for hyperparameter tuning (especially for LightGBM)
+3. Evaluation Metrics
+- Root Mean Squared Error (RMSE): primary metric for accuracy
+- Recorded training time and prediction latency for each model
 
-5. Tools & Libraries:
-- Data Processing: pandas, numpy, sklearn.preprocessing
-- Model Training: scikit-learn, lightgbm
-- Hyperparameter Optimization: Optuna
-- Visualization: matplotlib, seaborn, plotly
+**Results & Comparison**
+- Model |	RMSE:
+    - Linear Regression	3609.58
+    - Decision Tree	2296.02
+    - Random Forest	2346.63
+    - LightGBM	1725.01
+- LightGBM outperformed all other models with the lowest RMSE.
 
-6. Deliverables:
-- A trained machine learning model capable of accurately predicting used car prices.
-- A comparative analysis of different models, highlighting their strengths and weaknesses.
-- Insights into the impact of feature selection, hyperparameter tuning, and computational efficiency on model performance.
-- Recommendations for further improvements, including potential enhancements like dimensionality reduction or alternative boosting methods (e.g., CatBoost, XGBoost).
-- By the end of this project, Rusty Bargain will have a high-performing price prediction model that balances accuracy with efficiency, enabling a robust and user-friendly pricing tool in their app.
+**Execution Time**
+- Model |	Training + Inference Time:
+    - Linear Regression	0.05s (Fastest)
+    - Decision Tree	0.67s
+    - Random Forest	9.61s
+    - LightGBM	20.79s (Slowest)
+- Decision Tree provided a strong balance of speed and accuracy.
+- LightGBM required more time but delivered significantly better predictions.
 
-- ## Model Performance Analysis Based on RMSE & Execution Time
+**Final Verdict**
+- Category | Winner:
+    - Best Accuracy	- LightGBM
+    - Best Speed - Linear Reg.
+    - Best Trade-off Model	-  Decision Tree
+- LightGBM is the best model for deployment based on RMSE
+- Decision Tree may be suitable for faster predictions with reasonable accuracy
+- Random Forest added training time without substantial performance gain
 
-The results provide a detailed comparison of model accuracy (RMSE) and execution time (training and prediction).
+**Recommendations**
+- Deploy LightGBM in the Rusty Bargain app for optimal price predictions
+- Explore CatBoost or XGBoost for further accuracy or efficiency gains
+- Apply dimensionality reduction (e.g., PCA) or more efficient encoding for large-scale deployment
+- Enhance Optuna tuning with longer trials and early stopping
 
-- RMSE (Lower is Better)
-    - Linear Regression: RMSE = 3609.58 → Worst RMSE (too simplistic, lacks flexibility).
-    - Decision Tree Regression: RMSE = 2296.02 → Significant improvement over Linear Regression.
-    - Random Forest Regression: RMSE = 2346.63 → Slightly worse than Decision Tree but provides more stability.
-    - LightGBM: RMSE = 1725.01 → Best RMSE (Boosting worked extremely well).
-    - LightGBM significantly outperformed all models, achieving the lowest RMSE (~1725), making it the best-performing model.
+**Conclusion**
 
-- Execution Time (Lower is Better)
-    - Linear Regression: Fastest model (0.05s total), but poor accuracy.
-    - Decision Tree Regression: Very fast (0.67s total) and performs much better than Linear Regression.
-    - Random Forest Regression: Much slower (9.61s total), with no major RMSE improvement over Decision Tree.
-    - LightGBM: Slowest model (20.79s total) but provides the best accuracy.
-    - Takeaway:
-        - LightGBM had the best prediction accuracy, but at the cost of a longer training time.
-        - Decision Tree offered the best tradeoff between speed and accuracy.
-        - Random Forest took much longer to train but didn’t significantly outperform Decision Tree.
-
-- Final Verdict
-    - Best Model: LightGBM → Achieved the lowest RMSE (1725.01), making it the most accurate.
-    - Best Speed-Accuracy Tradeoff: Decision Tree Regression → Fast and still had a strong RMSE (2296.02).
-    - Random Forest: Didn’t provide enough improvement over Decision Tree to justify its longer runtime.
- 
-## Overall Conclusion
-
-The LightGBM (Gradient Boosted Regression) model was the best-performing model among the four tested. It provided the highest prediction accuracy (lowest RMSE) and outperformed the Random Forest model in both accuracy and training efficiency. While it required longer training time compared to Decision Tree Regression, the significant RMSE reduction (~570 points lower than Decision Tree) made the extra runtime worthwhile.
-
-Despite LightGBM's strong performance, the dataset contains many categorical variables with high cardinality. Future improvements could include:
-- Dimensionality Reduction Techniques: Feature selection or more efficient encoding strategies.
-- Hyperparameter Tuning: More extensive tuning to optimize LightGBM parameters.
-- Alternative Models: Exploring CatBoost or XGBoost to see if they can improve performance further.
-
-Final Recommendation: LightGBM is the best model for Rusty Bargain’s used car price prediction, offering the most accurate valuation while balancing training and prediction time efficiently.
+This project demonstrates the impact of model choice and optimization techniques on predictive performance. By testing multiple models and tuning them with Optuna, we achieved a highly accurate price prediction model ready for integration into Rusty Bargain’s pricing platform.
