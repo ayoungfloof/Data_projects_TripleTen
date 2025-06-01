@@ -1,6 +1,7 @@
 ## Plan Recommendation Model for Megaline Subscribers
 
 **Overiew**
+
 This project helps Megaline, a mobile telecommunications provider, optimize customer satisfaction and plan usage by recommending the most suitable mobile plan for each subscriber. Using monthly behavior data (calls, minutes, messages, and internet usage), the goal is to build a classification model that predicts whether a user should be on the "Smart" or "Ultra" plan.
 
 **Project Objective**
