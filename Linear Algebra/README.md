@@ -49,6 +49,15 @@ The dataset includes anonymized customer records containing:
 
 **Visuals**
 
+![image](https://github.com/user-attachments/assets/5ab9a99d-edb0-4661-b85d-736d593a73d5)
+
+![image](https://github.com/user-attachments/assets/2813c767-84e9-4d4c-8c6f-ec08f10b475d)
+
+![image](https://github.com/user-attachments/assets/5fc8e734-8fea-4c71-8bbe-9b545ad192b6)
+
+![image](https://github.com/user-attachments/assets/295e52e0-0af8-4a55-8be0-b75ac2e5bb84)
+
+![image](https://github.com/user-attachments/assets/0a06d090-4081-4fde-8aa8-e5fa56cd83ef)
 
 **Conclusion**
 - kNN Performance is highly sensitive to feature scaling. Without scaling, dominant features distort distance metrics.
