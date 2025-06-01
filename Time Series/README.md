@@ -1,6 +1,7 @@
 ##  Forecasting Hourly Taxi Demand for Sweet Lift Taxi
 
 **Overview**
+
 Sweet Lift Taxi, a ride-hailing service operating around major airports, aims to improve operational efficiency by accurately forecasting the number of taxi orders for the upcoming hour. This time series forecasting project leverages historical demand data to predict hourly order volume, helping the company manage driver allocation more effectively. The performance benchmark was an RMSE (Root Mean Squared Error) below 48 on unseen data.
 
 **Project Objective**
