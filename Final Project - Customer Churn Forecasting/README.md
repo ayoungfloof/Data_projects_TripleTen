@@ -1,10 +1,12 @@
 ## Customer Churn Forecasting for Interconnect Telecom
 
-**Description**
+**Overview**
 
-Interconnect, a telecom operator, seeks to proactively identify customers at risk of churning to reduce attrition and improve customer retention. By analyzing customer demographics, service usage, and contractual data, the aim is to build a machine learning model that predicts churn, enabling timely intervention with promotions and support.
+Interconnect Telecom aims to reduce customer attrition by proactively identifying users at high risk of churning. This project develops a machine learning solution to predict churn based on customer demographics, account information, internet and phone service details, and contract attributes.
 
-**Objective**
+By training and evaluating multiple classification models, the goal is to deliver a predictive tool that enables Interconnect’s retention team to prioritize outreach, offer incentives, and improve customer loyalty.
+
+**Project Objective**
 - Merge and clean multiple datasets containing customer information.
 - Conduct exploratory data analysis (EDA) to uncover patterns associated with churn.
 - Engineer relevant features and preprocess the data for modeling.
@@ -19,29 +21,40 @@ Interconnect, a telecom operator, seeks to proactively identify customers at ris
     - phone.csv: Phone service details.
     - Each dataset includes a customerID field used for merging.
 
-**Approach**
-- Data Preparation: Load and merge all datasets, check for duplicates and missing values.
-- EDA: Explore churn distribution, customer demographics, service patterns, and correlations.
-- Model Development: Train classification models including Logistic Regression, Random Forest, Gradient Boosting, KNN, SCM, and Stoacking.
-- Evaluation: Measure model performance with AUC-ROC and Accuracy.
-- Deployment Readiness: Select the most reliable model and summarize findings for stakeholders.
+**Tools & Technologies**
+- Languages: Python (pandas, NumPy, scikit-learn)
+- Visualization: matplotlib, seaborn
+- Modeling: Logistic Regression, Random Forest, Gradient Boosting, KNN, SVM, Stacking
+- Evaluation: AUC-ROC, Accuracy
+- Tuning: GridSearchCV
 
-**Tools & Libraries**
-- import pandas as pd
-- import numpy as np
-- import matplotlib.pyplot as plt
-- import seaborn as sns
-- from sklearn.model_selection import train_test_split
-- from sklearn.preprocessing import StandardScaler
-- from sklearn.ensemble import RandomForestClassifier
-- from sklearn.linear_model import LogisticRegression
-- from sklearn.ensemble import GradientBoostingClassifier, StackingClassifier
-- from sklearn.neighbors import KNeighborsClassifier
-- from sklearn.svm import SVC
-- from sklearn.metrics import roc_auc_score, accuracy_score, classification_report
-- from sklearn.model_selection import GridSearchCV
-- import warnings
-- warnings.filterwarnings("ignore")
+**Methodology**
+1. Data Preparation
+    - Merged all four datasets (7,043 rows) on customerID
+    - Cleaned missing values and duplicates
+    - Created a binary target variable based on EndDate (churned = 1)
+    - Applied one-hot encoding to categorical variables
+2. Exploratory Data Analysis
+    - Churn rate: ~26.5% of users
+    - Identified patterns by:
+    - Contract type: month-to-month customers churned most
+    - Payment method: electronic check correlated with higher churn
+    - Service features: multiple service bundles linked to lower churn risk
+3. Modeling & Evaluation
+Tested multiple classifiers and measured their performance:
+    - Model | AUC-ROC |	Accuracy:
+        - Logistic Regression	0.826	78.8%
+        - Random Forest	0.822	79.4%
+        - Gradient Boosting	0.841	79.6%
+        - Tuned GBM	0.846	80.7%
+Other models tested: K-Nearest Neighbors, Support Vector Classifier, StackingClassifier
+4. Model Tuning
+Used GridSearchCV to optimize the Gradient Boosting Classifier. The final model meets the business goal of AUC-ROC ≥ 0.81.
+
+**Methodology**
+
+
+
 
 
 ## Overall Conclusion
