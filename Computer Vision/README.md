@@ -1,6 +1,7 @@
 ## Predicting Age from Facial Images for Good Seed Supermarket
 
 **Overview**
+
 To strengthen compliance with alcohol sales regulations, Good Seed — a nationwide supermarket chain — aims to implement a computer vision system that estimates customer age during self-checkout. This project develops a convolutional neural network to predict a person’s age from facial images using deep learning techniques. A model with an MAE (Mean Absolute Error) of ≤ 8 years is considered suitable for deployment to assist human verification systems.
 
 **Project Objective**
