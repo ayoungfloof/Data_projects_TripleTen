@@ -1,102 +1,94 @@
-# Customer Churn Prediction for Beta Bank
+## Customer Churn Prediction for Beta Bank
 
-### Project Description:
-Beta Bank is facing customer churn as customers gradually leave the bank each month. To mitigate this issue, the bank wants to predict which customers are likely to leave. This project aims to build a machine learning classification model that identifies customers at risk of churning, helping Beta Bank take proactive measures to retain them.
+**Overview**
 
-### Objective:
-The primary goal is to build a machine learning model with an F1 score of at least 0.59. The model will classify whether a customer will leave (churn) or stay based on their past behavior. Additionally, the AUC-ROC metric will be evaluated for comparison with the F1 score.
+Beta Bank is experiencing customer churn as clients gradually leave the service. This project aims to develop a machine learning model that predicts which customers are at risk of churning. Accurate predictions will help the bank proactively retain high-risk customers and improve overall customer engagement.
 
-### Data Source:
-The data file is Churn.csv, containing historical customer data with the following features:
+**Project Objective**
+- Build a binary classification model to predict whether a customer will churn (leave the bank)
+- Achieve a minimum F1 score of 0.59 on the test set
+- Compare multiple models using both F1 and AUC-ROC metrics
+- Address class imbalance to improve prediction quality
+- Identify key factors that influence customer churn
 
-RowNumber: Index of the data row.<br>
-CustomerId: Unique customer identifier.<br>
-Surname: Customer surname.<br>
-CreditScore: Credit score of the customer.<br>
-Geography: Country of residence.<br>
-Gender: Gender of the customer.<br>
-Age: Customer's age.<br>
-Tenure: Duration of account tenure (in years).<br>
-Balance: Customer's account balance.<br>
-NumOfProducts: Number of banking products used.<br>
-HasCrCard: Whether the customer has a credit card.<br>
-IsActiveMember: Whether the customer is active.<br>
-EstimatedSalary: Estimated annual salary.<br>
+**Data Sources**
+- Dataset Path: Churn.csv
+- The dataset contains historical customer data with the following features:
+    - RowNumber: Index of the row
+    - CustomerId: Unique customer ID
+    - Surname: Last name
+    - CreditScore: Creditworthiness indicator
+    - Geography: Country of residence
+    - Gender: Customer’s gender
+    - Age: Age of the customer
+    - Tenure: Number of years with the bank
+    - Balance: Account balance
+    - NumOfProducts: Number of banking products held
+    - HasCrCard: Has credit card (1/0)
+    - IsActiveMember: Customer activity status
+    - EstimatedSalary: Estimated yearly income
+    - Exited: Target variable — whether the customer left (1) or stayed (0)
 
-### Approach:
-Data Preparation:
+**Tools & Technologies**
+- Languages: Python (pandas, NumPy, scikit-learn)
+- Visualization: matplotlib, seaborn
+- Modeling: Decision Tree, Logistic Regression, Random Forest
+- Evaluation: F1 Score, AUC-ROC, Accuracy, Confusion Matrix
+- Tuning: Class Weighting, Manual Hyperparameter Tuning
 
-Load and inspect the dataset.
-Preprocess features, ensuring categorical and numerical columns are appropriately handled.
-Address class imbalance using techniques like class weighting, upsampling, and downsampling.
-Model Development:
+**Methodology**
+1. Data Preparation
+- Loaded and explored dataset for class distribution and feature types
+- Handled missing values and irrelevant features
+- Encoded categorical variables and scaled numerical values
+- Addressed class imbalance using class_weight, upsampling, and downsampling techniques
+- Split the data into training, validation, and test sets
+2. Model Training
+- Trained three main classifiers:
+- Decision Tree
+- Logistic Regression
+- Random Forest
+- Performed manual hyperparameter tuning for each model
+- Evaluated models using validation F1 scores and AUC-ROC
+3. Evaluation Metrics
+- F1 Score: Primary performance metric
+- AUC-ROC: Evaluated model’s ability to distinguish churners from non-churners
+- Confusion Matrix: Visualized classification quality on minority class
 
-Split the data into training, validation, and test sets.
-Train and evaluate several classification models:
-Decision Tree Classifier
-Logistic Regression
-Random Forest Classifier
-Tune hyperparameters to improve model performance.
-Compare models based on F1 score and AUC-ROC metrics.
-Model Evaluation:
+**Results & Comparison**
+Final Model Performance
+- Model |	F1 Score (Test) |	AUC-ROC:
+    - Logistic Regression -	0.4970 -	—
+    - Decision Tree -	0.5163 -	—
+    - Random Forest -	0.6283 -	0.8596
+- Random Forest was the top-performing model on both F1 score and AUC-ROC
 
-Evaluate the final model using the test set.
-Perform a sanity check to ensure model consistency.
+**Feature Importance (Random Forest)**
+- Feature |	Influence:
+    - Balance -	High
+    - Age -	High
+    - NumOfProducts -	Medium
+    - IsActiveMember -	Medium
+    - CreditScore -	Low
+    - Geography -	Low
 
-### Tools Used
+**Sanity Check**
+- Customers with high credit scores, low balances, and active usage had low churn risk
+- Inactive customers with high balances and low product engagement were flagged at risk
+- Model behaved logically on custom edge cases
 
-import pandas as pd                          
-from sklearn.model_selection import train_test_split  
-from sklearn.tree import DecisionTreeClassifier       
-from sklearn.linear_model import LogisticRegression  
-from sklearn.ensemble import RandomForestClassifier  
-from sklearn.metrics import(  
-    accuracy_score,                       
-    f1_score, roc_auc_score,             
-    confusion_matrix, ConfusionMatrixDisplay
-)
-### Deliverables:
-A trained classification model that achieves the required accuracy and F1 score.
-Comparative analysis of different models with tuned hyperparameters.
-Insights into customer behavior and the key factors influencing churn.
-Visualizations of model performance, including confusion matrices.
+**Final Verdict**
+- Best Accuracy:	Random Forest
+- Easiest to Interpret:	Decision Tree
+- Weakest Performance:	Logistic Regression
+- Deploy the Random Forest model for highest performance
+- Decision Tree could serve as a fallback if interpretability or speed is prioritized
 
-### Overall Insights from the Project
-Data Balance and Class Imbalance<br>
+**Recommendations**
+- Customer Retention Focus: Target inactive customers with high balances for retention strategies
+- Cross-sell Opportunities: Encourage broader product adoption to reduce churn likelihood
+- Risk Monitoring: Monitor customers with low credit scores and inactivity
 
-The dataset had a significant class imbalance, where 80% of customers had not exited (0), and only 20% had exited (1).<br>
-This imbalance was addressed using class weight adjustments, which allowed the models to give more importance to the minority class (exited customers) and improved performance.<br>
+**Conclusion**
 
-Model Performance<br>
-
-Baseline Model: Without class imbalance adjustments, the initial decision tree achieved an F1 Score of 0.5177 and accuracy of 78.2%, indicating poor performance on the minority class.<br>
-Decision Tree Model (Class Weight): Adjusting for class imbalance improved the F1 score slightly to 0.5163 with accuracy rising to 79.2%.<br>
-Logistic Regression Model: Even with class weight adjustments, Logistic Regression struggled with complex patterns, yielding an F1 Score of 0.4970 and accuracy of 67.0%.<br>
-Random Forest Model (Class Weight): This model outperformed all others. After hyperparameter tuning, the best Random Forest model achieved an F1 Score of 0.6532 on the validation set and 0.6283 on the test set, with AUC-ROC of 0.8596.
-Key Insight: Random Forest emerged as the best model, balancing both precision and recall for predicting customer churn effectively.
-
-Feature Importance<br>
-
-From the Random Forest model's analysis:<br>
-Balance (account balance) and Age were the most significant predictors of churn.<br>
-Number of Products used, and whether the customer was an Active Member also played crucial roles.<br>
-Credit Score and Geography contributed less to the prediction.<br>
-Key Insight: Customers with higher balances and older ages showed varying churn probabilities. Active membership and product usage also influenced retention likelihood.<br>
-
-Sanity Check Insights<br>
-
-Edge cases demonstrated that the model behaved logically:<br>
-Customers with high credit scores, zero balance, and high activity had low churn probabilities.<br>
-Customers with low credit scores, inactivity, and high balance were flagged as moderate risk.<br>
-The predictions aligned with expectations, highlighting the reliability of the trained Random Forest model.<br>
-
-Business Impact and Recommendations<br>
-
-Customer Retention Focus: Target customers with high account balances who are inactive or under-engaged, as these factors increase churn risk.<br>
-Improve Engagement: Encourage customers to remain active and diversify their product usage (e.g., cross-sell products).<br>
-Monitor High-Risk Segments: Specifically, customers with low credit scores and high balances need closer attention to prevent churn.<br>
-
-Final Model Performance<br>
-
-The Random Forest model achieved the highest F1 score on the test set (0.6283) and demonstrated robust performance with AUC-ROC of 0.8596.<br>
-This performance meets the project's requirement of F1 ≥ 0.59.
+This project successfully built a customer churn prediction model that meets the performance threshold (F1 ≥ 0.59). The Random Forest model stood out with an F1 score of 0.6283 and AUC-ROC of 0.8596, making it the best choice for deployment at Beta Bank. The bank can now use this model to proactively address churn risk and enhance customer loyalty.
