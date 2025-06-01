@@ -18,7 +18,11 @@ Rusty Bargain, a used car sales service, is developing an app to help customers 
     - Target variable: Price (in Euros)
 
 **Tools & Technologies**
-
+- Languages: Python (pandas, NumPy, scikit-learn, lightgbm, optuna)
+- Visualization: matplotlib, seaborn, plotly
+- Modeling: Linear Regression, Decision Tree, Random Forest, LightGBM
+- Evaluation: RMSE, Training Time, Inference Time
+- Tuning: Optuna
 
 **Methodogy**
 1. Data Preparation
