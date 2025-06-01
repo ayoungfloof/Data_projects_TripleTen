@@ -10,7 +10,14 @@ With the growing volume of online reviews, the Film Junky Union — a community 
 - Compare traditional NLP pipelines with transformer-based approaches like BERT (optional)
 - Test model behavior on custom-written reviews
 
-**Data Sources:**
+**Data Sources**
+- Dataset: /datasets/imdb_reviews.tsv
+- Column |	Description:
+    - review	Raw text of each IMDB movie review
+    - pos	Sentiment label (1 = positive, 0 = negative)
+    - ds_part	Dataset split indicator (train, test)
+
+**Tools & Technologies**
 - Data Handling: pandas, numpy
 - Text Preprocessing: NLTK, spaCy, regex, scikit-learn
 - Vectorization: TF-IDF, CountVectorizer, optional BERT embeddings
