@@ -1,6 +1,7 @@
 ## Basic Python: TV Ratings and Vote Distribution During the Golden Age
 
 **Overview**
+
 This project explores how audience voting behavior relates to show ratings during the so-called "Golden Age of Television" (1999–present). Using a dataset of movies and shows, the goal is to determine whether higher-rated TV shows also receive more audience votes, focusing exclusively on television content.
 
 **Project Objective**
