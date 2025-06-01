@@ -1,19 +1,44 @@
-Basic Python - Project
-Introduction
-In this project, you will work with data from the entertainment industry. You will study a dataset with records on movies and shows. The research will focus on the "Golden Age" of television, which began in 1999 with the release of The Sopranos and is still ongoing.
+## Basic Python: TV Ratings and Vote Distribution During the Golden Age
 
-The aim of this project is to investigate how the number of votes a title receives impacts its ratings. The assumption is that highly-rated shows (we will focus on TV shows, ignoring movies) released during the "Golden Age" of television also have the most votes.
+**Overview**
+This project explores how audience voting behavior relates to show ratings during the so-called "Golden Age of Television" (1999–present). Using a dataset of movies and shows, the goal is to determine whether higher-rated TV shows also receive more audience votes, focusing exclusively on television content.
 
-Stages
-Data on movies and shows is stored in the /datasets/movies_and_shows.csv file. There is no information about the quality of the data, so you will need to explore it before doing the analysis.
+**Project Objective**
+- Investigate whether highly rated TV shows also tend to receive more votes
+- Focus only on shows released during the "Golden Age" (post-1999)
+- Clean and prepare the dataset for reliable analysis
+- Visualize rating and vote distribution across different score bands
 
-First, you'll evaluate the quality of the data and see whether its issues are significant. Then, during data preprocessing, you will try to account for the most critical problems.
+**Data Sources**
+- Dataset: movies_and_shows.csv
+- Contains metadata on movies and shows (title, type, year, rating, number of votes)
+- Initial data quality was unknown and required exploration and preprocessing
 
-Your project will consist of three stages:
+**Tools & Technologies**
+- Language: Python
+- Libraries: pandas, matplotlib, seaborn
+- Environment: Jupyter Notebook
 
-Data overview
-Data preprocessing
-Data analysis
+**Methodology**
+1. Data Overview
+- Loaded the dataset and reviewed key columns for completeness and consistency
+- Identified missing or invalid values in rating and vote columns
+2. Data Preprocessing
+- Removed duplicate entries
+- Filtered dataset to include only TV shows released after 1999
+- Dropped entries with missing vote or rating values
+- Validated remaining data distribution
+3. Data Analysis
+- Grouped shows by rating scores (0–10 scale)
+- Aggregated and visualized total number of votes by rating
+- Focused on identifying score ranges with the highest engagement (votes)
 
-Conclusion
-The research done confirms that highly-rated shows released during the "Golden Age" of television also have the most votes. While shows with score 4 have more votes than ones with scores 5 and 6, the top three (scores 7-9) have the largest number. The data studied represents around 94% of the original set, so we can be confident in our findings.
+**Visuals**
+![image](https://github.com/user-attachments/assets/aa5933f5-b861-4bfb-8999-92dac677cc7f)
+
+**Conclusion**
+- TV shows with higher ratings (particularly scores 7, 8, and 9) received the highest number of audience votes
+- Shows with low ratings (0–3) had significantly less engagement
+- Although there were some anomalies (e.g., score 4 had more votes than 5 or 6), the general trend supports the hypothesis
+Approximately 94% of the original dataset was retained after preprocessing, giving confidence in the validity of the results.
+
