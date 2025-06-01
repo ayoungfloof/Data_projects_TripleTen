@@ -1,104 +1,81 @@
 ##  Forecasting Hourly Taxi Demand for Sweet Lift Taxi
 
-### Description:
-Sweet Lift Taxi, a ride-hailing service operating at major airports, seeks to enhance operational efficiency by accurately predicting the number of taxi orders in the upcoming hour. This project leverages historical order data to develop a robust time series forecasting model, enabling the company to proactively manage driver availability during peak demand periods. The key objective is to achieve a model that not only delivers high predictive accuracy but also meets the company’s benchmark of a Root Mean Squared Error (RMSE) below 48 on unseen data.
+**Overview**
+Sweet Lift Taxi, a ride-hailing service operating around major airports, aims to improve operational efficiency by accurately forecasting the number of taxi orders for the upcoming hour. This time series forecasting project leverages historical demand data to predict hourly order volume, helping the company manage driver allocation more effectively. The performance benchmark was an RMSE (Root Mean Squared Error) below 48 on unseen data.
 
-### Objective:
-- Build and evaluate multiple forecasting models to predict hourly taxi orders.
-- Explore a mix of traditional time series models (ARIMA) and modern machine learning techniques (Random Forest, LightGBM, CatBoost, XGBoost).
-- Perform hyperparameter tuning to optimize model performance.
-- Select the best model based on RMSE and prediction stability.
-- Visualize and interpret forecast results to support decision-making for taxi deployment.
+**Project Objective**
+- Build and compare multiple forecasting models for hourly taxi demand
+- Evaluate both traditional time series (ARIMA) and modern machine learning models (Random Forest, LightGBM, CatBoost, XGBoost)
+- Engineer time-based features (lag, rolling mean, calendar variables)
+- Tune hyperparameters to optimize predictive performance
+- Select the best model based on RMSE and forecast reliability
+- Visualize predictions and support real-time decision-making
 
-### Data Sources:
-- The dataset is provided in /datasets/taxi.csv and contains:
-    - Datetime: Timestamp of each record (resampled to hourly).
-    - num_orders: Number of taxi orders received during each hour.
+**Data Sources**
+- Dataset Path: /datasets/taxi.csv
+- The dataset includes hourly historical taxi order data with:
+    - datetime: Timestamp for each record (hourly)
+    - num_orders: Number of taxi orders placed in each hour
     
-### Approach:
+**Tools & Technologies**
+- Languages: Python (pandas, NumPy, scikit-learn, statsmodels)
+- Visualization: matplotlib, seaborn
+- Modeling: Linear Regression, Random Forest, LightGBM, CatBoost, XGBoost, ARIMA
+- Evaluation: RMSE
+- Tuning: Manual + Grid search for best parameters
 
-- Data Preparation:
-    - Resampled raw data to hourly intervals.
-    - Conducted exploratory time series analysis, including trend and seasonality decomposition.
-    - Checked and corrected for non-stationarity using differencing techniques.
-    - Created lag features, rolling averages, and time-based components (e.g., hour, day of week) to enhance machine learning performance.
+**Methodology**
+1. Data Preparation
+- Resampled data to ensure hourly granularity
+- Conducted time series decomposition to observe trend and seasonality
+- Used ADF test to confirm non-stationarity and applied differencing
+- Created lag features, rolling mean features, and datetime-based features (hour, day of week)
+- Used chronological train/validation/test splits (10% of data reserved for testing)
+2. Model Training
+- Trained the following models:
+- Linear Regression (baseline)
+- Random Forest Regressor
+- LightGBM Regressor
+- CatBoost Regressor
+- XGBoost Regressor
+- ARIMA
+- Applied hyperparameter tuning for models with significant promise (LightGBM, CatBoost).
+3. Evaluation Metrics
+- Root Mean Squared Error (RMSE) used as primary metric
+- Visualization of predicted vs actual values to assess fit
+- Plotted line graphs and seasonal patterns to confirm prediction stability
 
-- Model Development:
-    - Trained and evaluated the following models:
-    - Linear Regression
-    - Random Forest Regressor
-    - LightGBM Regressor
-    - CatBoost Regressor
-    - XGBoost Regressor
-    - ARIMA
-    
-- Performance Evaluation:
-    - Used Root Mean Squared Error (RMSE) as the primary metric.
-    - Compared actual vs predicted values on a 10% test set (chronologically split).
-    - Visualized prediction quality using line plots to validate pattern matching.
-    
-### Tools & Libraries:
-- !pip install catboost lightgbm xgboost
-- import numpy as np
-- import pandas as pd
-- import matplotlib.pyplot as plt
-- from sklearn.model_selection import train_test_split, cross_val_score
-- from statsmodels.tsa.seasonal import seasonal_decompose
-- from statsmodels.tsa.stattools import adfuller
-- from sklearn.linear_model import LinearRegression
-- from sklearn.ensemble import RandomForestRegressor
-- from sklearn.metrics import mean_squared_error
-- from statsmodels.tsa.arima.model import ARIMA
-- from catboost import CatBoostRegressor
-- from lightgbm import LGBMRegressor
-- from xgboost import XGBRegressor
-- from sklearn.preprocessing import OneHotEncoder
-- from sklearn.compose import ColumnTransformer
-- from sklearn.pipeline import Pipeline
-- from sklearn.model_selection import TimeSeriesSplit
-- import warnings
-- warnings.filterwarnings("ignore")
+**Results & Comparison**
+- Linear Regression -	50.31
+- Random Forest -	45.11
+- CatBoost -	43.71
+- XGBoost -	46.05
+- LightGBM -	43.66 (initial)
+- LightGBM (Tuned) -	24.87
+- ARIMA	67.06 -
+- LightGBM provided the best balance of speed and accuracy
+- ARIMA underperformed, likely due to underfitting and lack of feature flexibility
 
-### Deliverables:
-- A high-performance forecasting model for hourly taxi demand.
-- A detailed comparison of machine learning and time series modeling approaches.
-- Visual analysis of model predictions aligned with actual demand fluctuations.
-- Recommendations for using the model in real-time taxi allocation systems.
+**Tuned LightGBM Parameters**
+- n_estimators = 100
+- max_depth = 10
+- num_leaves = 31
+- learning_rate = 0.1
+- This configuration reduced RMSE to 24.87, well below the target threshold of 48.
 
-- ## Final Conclusion: Sweet Lift Taxi Forecasting Project
+**Final Verdict**
+- Best Accuracy	LightGBM (Tuned)
+- Best Simplicity (Baseline)	Linear Regression
+- Weakest Fit	ARIMA
+- Deploy the tuned LightGBM model for operational forecasting
+- Reserve simpler models for baseline or interpretability needs
 
-In this project, a model was developed to forecast hourly taxi order demand for Sweet Lift Taxi using historical data. The primary objective was to build a model capable of predicting the number of orders for the next hour with an RMSE not exceeding 48.
+**Recommendations**
+- Integrate the tuned LightGBM model into Sweet Lift’s real-time dispatching system
+- Explore further tuning with cross-validation over multiple seasonal cycles
+- Consider adding external features (e.g., weather, events, flight schedules) for enhanced predictions
+- Revisit ARIMA with SARIMA variants for improved seasonality modeling
 
-### Data Preparation & Exploration
-- The dataset contained timesamped order data, which was resampled to 1-hour intervals.
-- Exploratory data analysis performed:
-    - Visualizing overall trends
-    - Rolling mean smoothing
-    - Time Series decomposition
-    - Stationarity testing using the ADF test
-- Based on the stationarity check, it confirmed the series was non-stationary and addressed it using defferencing for ARIMA.
+**Conclusion**
 
-### Feature Engineering
-To prepare the data for supergised learning models, these were created:
-- Lag features to capture recent trends
-- Rolling mean to smooth short-term fluctuations
-- Time-based features such as hour and dayofweek
-
-### Model Traning & Evaluation
-Trained and compared several models using a chronological train-test split, with 10% of the data reserved as a test set.
-- Linear Regression RMSE: 50.31 - Just slightly above target
-- Random Forest RMSE: 45.11 - Solid and consistent.
-- CatBoost RMSE: 43.71 - Nearly tied with LightGBM - very stable
-- LightGBM RMSE: 43.66 - Best performance - efficient and fast. 
-- XGBoost RMSE: 46.05 - Good, but slightly weaker than others. 
-- ARIMA RMSE: 67.06 - Not a good fit here - likely underfitting
-
-The best performing model was the LightGBM Regressor and when tuned with best parameters of:
-- n_estimators=100
-- max_depth=10
-- num_leaves=31
-- learning_rate=0.1
-The model achieved an RMSE of 24.87, successfully meeting the project goal.
-
-### Final Evaluation
-The final model was validated on the test set and visualized against actual values. It effectively captured the overall demand patterns and seasonality in hourly taxi orders. While some extreme peaks were underpredicted (a common challenge in real-world forecasting), the model provides highly reliable estimates for most operating conditions.
+This project successfully forecasted hourly taxi demand using a variety of modeling techniques. The tuned LightGBM model achieved an RMSE of 24.87, significantly outperforming the benchmark. With proper integration, this model can help Sweet Lift Taxi proactively allocate drivers, reduce wait times, and optimize service availability.
