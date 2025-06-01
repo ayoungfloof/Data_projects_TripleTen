@@ -45,6 +45,16 @@ Sweet Lift Taxi, a ride-hailing service operating around major airports, aims to
 - Visualization of predicted vs actual values to assess fit
 - Plotted line graphs and seasonal patterns to confirm prediction stability
 
+**Visuals**
+
+![image](https://github.com/user-attachments/assets/061aced0-b20f-4d5f-86da-df01052350f5)
+
+![image](https://github.com/user-attachments/assets/61cc5b47-82de-4370-a75c-969b278cf58d)
+
+![image](https://github.com/user-attachments/assets/6725c0b5-1046-40fd-98b8-d18d4aabc92b)
+
+![image](https://github.com/user-attachments/assets/7439cbbe-5e01-4837-ac1b-b32fd90be95d)
+
 **Results & Comparison**
 - Linear Regression -	50.31
 - Random Forest -	45.11
